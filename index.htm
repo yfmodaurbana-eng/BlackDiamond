@@ -1,123 +1,244 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Tienda Camisetas</title>
+  <meta charset="UTF-8">
+  <title>Black Diamond</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body{font-family:Arial;display:flex;justify-content:center;background:#f4f4f4;}
-.card{width:300px;background:white;padding:15px;border-radius:12px;position:relative;}
-img{width:100%;height:180px;object-fit:cover;border-radius:10px;}
-button{cursor:pointer;}
-.arrow{position:absolute;top:90px;background:black;color:white;border:none;border-radius:50%;width:30px;height:30px;}
-.left{left:10px;}
-.right{right:10px;}
-select,input{width:100%;margin-top:5px;padding:6px;}
-</style>
+  <!-- Fuente elegante -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #d4af37;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* CABECERA */
+    header {
+      background-color: #000;
+      border-bottom: 1px solid #d4af37;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3.5rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+    }
+
+    /* SECCIÓN PRODUCTOS */
+    .productos {
+      padding: 60px 20px;
+      background-color: #111;
+    }
+
+    .productos h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2rem;
+    }
+
+    /* CONTENEDOR PRODUCTOS (GRID BONITO) */
+    #contenedor-productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    /* TARJETAS (por si no tienes estilo en tu código) */
+    .producto {
+      background: #000;
+      border: 1px solid #d4af37;
+      padding: 20px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .producto:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #d4af37;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #d4af37;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="card">
+  <!-- CABECERA -->
+  <header>
+    <h1>Black Diamond</h1>
+  </header>
 
-<!-- 📸 IMAGEN -->
-<img id="img" src="https://i.imgur.com/Kb6WlCs.jpeg">
+  <!-- PRODUCTOS -->
+  <section class="productos">
+    <h2>Nuestros productos</h2>
 
-<button class="arrow left" onclick="prev()">‹</button>
-<button class="arrow right" onclick="next()">›</button>
+    <div id="contenedor-productos">
+      <!-- 👇 PEGA AQUÍ TU CÓDIGO DE PRODUCTOS 👇 -->
+      <iframe srcdoc='
+<div style="max-width:240px;font-family:Arial;padding:10px;position:relative;">
 
-<h3>💎 Camiseta Diamond</h3>
-<p>💸 35€</p>
-<p>Ref: CD001</p>
+  <!-- 📸 IMAGEN -->
+  <img id="img" src="https://i.imgur.com/PFgZjzN.png"
+  style="width:100%;height:160px;object-fit:cover;border-radius:10px;">
 
-<!-- 🎨 COLOR -->
-<select id="color" onchange="syncColor()">
-  <option value="">🎨 Color</option>
-  <option value="Blanco">Blanco</option>
-  <option value="Negro">Negro</option>
-</select>
+  <!-- 🔘 FLECHAS -->
+  <button onclick="prev()" style="position:absolute;top:70px;left:5px;background:black;color:white;border:none;border-radius:50%;width:25px;height:25px;">‹</button>
 
-<!-- 🏷️ TALLA -->
-<select id="talla">
-  <option value="">🏷️ Talla</option>
-  <option>S</option>
-  <option>M</option>
-  <option>L</option>
-</select>
+  <button onclick="next()" style="position:absolute;top:70px;right:5px;background:black;color:white;border:none;border-radius:50%;width:25px;height:25px;">›</button>
 
-<!-- 📦 ENVÍO -->
-<details>
-<summary>📦 Dirección de envío</summary>
+  <!-- 🏷️ INFO -->
+  <h3 style="margin:8px 0 2px;font-size:14px;">💎Camiseta Diamon (Cachaba) 35€</h3>
 
-<input id="nombre" placeholder="Nombre">
-<input id="telefono" placeholder="Teléfono">
-<input id="calle" placeholder="Calle">
-<input id="ciudad" placeholder="Ciudad">
-<input id="cp" placeholder="C.P">
+  <!-- 🔴 REFERENCIA -->
+  <p style="font-size:10px;color:#000000;margin:2px 0;">Ref: CD002 </p>
 
-</details>
+  <!-- 🎨 COLOR -->
+  <select id="color" onchange="cambiarColor()" style="width:100%;margin-top:6px;">
+    <option value="">🎨Color</option>
+    <option value="Blanco">Blanco</option>
+    <option value="Negro">Negro</option>
+  </select>
 
-<!-- 🟢 BOTÓN -->
-<button onclick="sendWhatsApp()" style="width:100%;margin-top:10px;background:#25D366;border:none;padding:10px;border-radius:10px;font-weight:bold;">
-💳 Pago Bizum / WhatsApp
-</button>
+  <!-- 🔘 TALLA -->
+  <select id="talla" style="width:100%;margin-top:5px;">
+    <option value="">🏷️Talla</option>
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+  </select>
+
+  <!-- 📦 ENVÍO -->
+  <details style="margin-top:6px;font-size:11px;">
+    <summary style="font-weight:bold;">📦🔥Dirección de envío (Importante)🔥</summary>
+
+    <input id="nombre" placeholder="Nombre" style="width:100%;margin-top:5px;">
+    <input id="telefono" placeholder="📞Teléfono" style="width:100%;margin-top:5px;">
+    <input id="direccion" placeholder="📍Calle, portal, puerta" style="width:100%;margin-top:5px;">
+    <input id="ciudad" placeholder="Ciudad" style="width:100%;margin-top:5px;">
+    <input id="cp" placeholder="Código Postal" style="width:100%;margin-top:5px;">
+  </details>
+
+  <!-- 🟢 BOTÓN -->
+  <button onclick="enviar()"
+  style="width:100%;margin-top:8px;background:#3FBA5B
+;color:black;padding:8px;border:none;border-radius:8px;">💳
+    Comprar por Bizum
+  </button>
+
+  <!-- 🚚 ENVÍO -->
+  <p style="font-size:12px;color:#000000;margin:8px 0;">🚚Envío gratuito a toda España</p>
 
 </div>
 
 <script>
 
-let images = [
- "https://i.imgur.com/Kb6WlCs.jpeg", // blanco
- "https://i.imgur.com/I1dAXjw.jpeg"  // negro
+// 🔴 IMÁGENES
+var imagenes = [
+  "https://i.imgur.com/Kb6WlCs.jpeg",
+  "https://i.imgur.com/1GStM7t.jpeg"
 ];
 
-let colors = ["Blanco","Negro"];
-let i = 0;
+// 🔴 COLORES EN ORDEN
+var colores = ["Blanco","Negro"];
+
+// 🔴 REFERENCIA
+var referencia = "";
+
+// 🔴 NOMBRE DEL PRODUCTO
+var producto = "Camiseta Diamon (Cachaba)";
+
+var i = 0;
+
+function cambiarColor(){
+
+  var colorSeleccionado =
+  document.getElementById("color").value;
+
+  if(colorSeleccionado == "Blanco"){
+    document.getElementById("img").src =
+    "https://i.imgur.com/Kb6WlCs.jpeg";
+    i = 0;
+  }
+
+  if(colorSeleccionado == "Negro"){
+    document.getElementById("img").src =
+    "https://i.imgur.com/I1dAXjw.jpeg";
+    i = 1;
+  }
+}
 
 function next(){
- i++;
- if(i>=images.length) i=0;
- update();
+  i++;
+  if(i >= imagenes.length){
+    i = 0;
+  }
+
+  document.getElementById("img").src = imagenes[i];
+  document.getElementById("color").value = colores[i];
 }
 
 function prev(){
- i--;
- if(i<0) i=images.length-1;
- update();
+  i--;
+  if(i < 0){
+    i = imagenes.length - 1;
+  }
+
+  document.getElementById("img").src = imagenes[i];
+  document.getElementById("color").value = colores[i];
 }
 
-function syncColor(){
- let c = document.getElementById("color").value;
- if(c=="Blanco") i=0;
- if(c=="Negro") i=1;
- update();
-}
+function enviar(){
 
-function update(){
- document.getElementById("img").src = images[i];
- document.getElementById("color").value = colors[i];
-}
+  var color = document.getElementById("color").value;
+  var talla = document.getElementById("talla").value;
+  var nombre = document.getElementById("nombre").value;
+  var telefono = document.getElementById("telefono").value;
+  var direccion = document.getElementById("direccion").value;
+  var ciudad = document.getElementById("ciudad").value;
+  var cp = document.getElementById("cp").value;
 
-function sendWhatsApp(){
+  var msg =
+  "🛍️ PEDIDO%0A%0A" +
+  "Producto: " + producto + "%0A" +
+  "Referencia: " + referencia + "%0A%0A" +
+  "Color: " + color + "%0A" +
+  "Talla: " + talla + "%0A%0A" +
+  "--- ENVÍO ---%0A" +
+  "Nombre: " + nombre + "%0A" +
+  "Teléfono: " + telefono + "%0A" +
+  "Dirección: " + direccion + "%0A" +
+  "Ciudad: " + ciudad + "%0A" +
+  "CP: " + cp;
 
- let msg =
- "🛍️ PEDIDO%0A%0A"+
- "Producto: Camiseta Diamond%0A"+
- "Color: "+document.getElementById("color").value+"%0A"+
- "Talla: "+document.getElementById("talla").value+"%0A%0A"+
- "📦 ENVÍO%0A"+
- "Nombre: "+document.getElementById("nombre").value+"%0A"+
- "Teléfono: "+document.getElementById("telefono").value+"%0A"+
- "Calle: "+document.getElementById("calle").value+"%0A"+
- "Ciudad: "+document.getElementById("ciudad").value+"%0A"+
- "CP: "+document.getElementById("cp").value;
-
- window.open("https://wa.me/34607877328?text="+msg);
-
+  window.open("https://wa.me/34607877328?text=" + msg);
 }
 
 </script>
+' style="width:100%;height:550px;border:none;"></iframe>
+
+
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 Black Diamond
+  </footer>
 
 </body>
 </html>
