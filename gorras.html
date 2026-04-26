@@ -11,7 +11,7 @@
 <style>
 
 /* =======================
-   EFECTOS DE FONDO
+   FONDO EFECTOS
 ======================= */
 
 #rain, #stars {
@@ -22,6 +22,7 @@
   z-index: 0;
 }
 
+/* 💎 DIAMANTES */
 .diamond {
   position: absolute;
   width: 18px;
@@ -29,7 +30,6 @@
   opacity: 0.9;
   pointer-events: none;
   animation: fall linear forwards, glow 2.2s ease-in-out infinite;
-  transform-origin: center;
   filter: drop-shadow(0 0 6px rgba(255,215,0,0.8));
 }
 
@@ -45,6 +45,7 @@
   100% { filter: brightness(1); }
 }
 
+/* ✨ ESTRELLAS */
 .star {
   position: absolute;
   width: 2px;
@@ -63,7 +64,7 @@
 }
 
 /* =======================
-   BRILLO DORADO
+   BASE
 ======================= */
 
 @keyframes shimmer {
@@ -71,8 +72,104 @@
   100% { background-position: 200% center; }
 }
 
-/* TITULOS */
-h1, h2 {
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #000 0%, #050505 50%, #000 100%);
+  overflow-x: hidden;
+  text-align: center;
+}
+
+header, section, footer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+/* =======================
+   TITULO
+======================= */
+
+h1 {
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 6px;
+
+  background: linear-gradient(
+    90deg,
+    #7a5c12,
+    #ffd700,
+    #fff8dc,
+    #d4af37,
+    #7a5c12
+  );
+
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shimmer 4s linear infinite;
+
+  text-shadow: 0 0 18px rgba(255,215,0,0.25);
+}
+
+/* =======================
+   BADGE LINGOTE (AJUSTADO AL TEXTO)
+======================= */
+
+.gold-badge {
+  display: inline-block;          /* 🔥 CLAVE: NO ocupa ancho completo */
+  margin: 30px auto 10px;
+  padding: 10px 22px;
+
+  border-radius: 18px;
+
+  background: linear-gradient(
+    145deg,
+    #3a2a00,
+    #b8860b,
+    #ffd700,
+    #b8860b,
+    #3a2a00
+  );
+
+  background-size: 300% 300%;
+  animation: shimmer 6s linear infinite;
+
+  box-shadow:
+    0 0 18px rgba(255,215,0,0.25),
+    inset 0 0 14px rgba(0,0,0,0.6);
+
+  border: 1px solid rgba(255,215,0,0.35);
+
+  position: relative;
+}
+
+/* brillo interno */
+.gold-badge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  background: linear-gradient(
+    120deg,
+    transparent 25%,
+    rgba(255,255,255,0.12) 45%,
+    transparent 65%
+  );
+  animation: shineMove 5s infinite linear;
+}
+
+@keyframes shineMove {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* texto dentro del badge */
+.gold-title {
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
   font-family: 'Playfair Display', serif;
 
   background: linear-gradient(
@@ -90,117 +187,22 @@ h1, h2 {
 
   animation: shimmer 4s linear infinite;
 
-  text-shadow: 0 0 14px rgba(255,215,0,0.25);
-}
-
-/* TEXTOS */
-p {
-  color: #e6d08a;
-  text-shadow: 0 0 10px rgba(255,215,0,0.12);
-}
-
-/* =======================
-   ESTILO GENERAL
-======================= */
-
-body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  color: white;
-  min-height: 100vh;
-  background: linear-gradient(180deg, #000 0%, #050505 50%, #000 100%);
-  overflow-x: hidden;
-}
-
-header, section, footer, nav {
-  position: relative;
-  z-index: 2;
+  white-space: nowrap;
 }
 
 /* =======================
-   MENU LIMPIO
+   GRID
 ======================= */
 
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  flex-wrap: wrap;
-  padding: 20px;
-  border-bottom: 1px solid rgba(212,175,55,0.15);
-}
-
-nav a {
-  text-decoration: none;
-  padding: 10px 18px;
-  border-radius: 12px;
-  font-size: 14px;
-
-  color: #d4af37;
-  font-weight: 700;
-
-  border: 1px solid rgba(212,175,55,0.35);
-  background: rgba(0,0,0,0.2);
-
-  transition: 0.25s;
-}
-
-nav a:hover {
-  background: rgba(212,175,55,0.15);
-  border-color: rgba(255,215,0,0.6);
-  transform: scale(1.05);
-}
-
-/* =======================
-   HEADER
-======================= */
-
-header {
-  text-align: center;
-  padding: 50px 20px 20px;
-}
-
-/* =======================
-   HERO
-======================= */
-
-.hero {
-  max-width: 1200px;
-  margin: 30px auto;
-  padding: 0 20px;
-}
-
-.hero img {
-  width: 100%;
-  border-radius: 18px;
-  display: block;
-}
-
-/* =======================
-   CATALOGO
-======================= */
-
-.productos {
-  padding: 60px 20px;
-}
-
-/* 🔥 TITULO CATALOGO CENTRADO PERFECTO */
-.productos h2 {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-/* GRID */
 .grid {
-  max-width: 1400px;
-  margin: 0 auto;
-
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 28px;
 
   justify-items: center;
   align-items: start;
+  margin-top: 30px;
 }
 
 .grid iframe {
@@ -208,15 +210,22 @@ header {
   max-width: 260px;
   min-height: 620px;
   border: none;
-
-  display: block;
-  margin: 0 auto;
+  border-radius: 12px;
 }
 
 /* =======================
-   FOOTER
+   DESCRIPCION
 ======================= */
 
+.description {
+  color: #e6d08a;
+  text-shadow: 0 0 10px rgba(255,215,0,0.12);
+  max-width: 700px;
+  margin: 25px auto 0;
+  font-size: 14px;
+}
+
+/* FOOTER */
 footer {
   text-align: center;
   padding: 30px;
@@ -224,7 +233,6 @@ footer {
 }
 
 /* RESPONSIVE */
-
 @media (max-width: 1024px) {
   .grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -241,31 +249,22 @@ footer {
 <div id="rain"></div>
 <div id="stars"></div>
 
-<nav>
-  <a href="index.html">Inicio</a>
-  <a href="camisetas.html">Camisetas</a>
-  <a href="conjuntos.html">Conjuntos</a>
-  <a href="gorras.html">Gorras</a>
-</nav>
-
 <header>
   <h1>Black Diamond</h1>
-  <p>
-    Streetwear premium · ediciones limitadas · estilo exclusivo · envíos rápidos
-  </p>
+
+  <!-- 💎 BADGE SOLO AJUSTADO AL TEXTO -->
+  <div class="gold-badge">
+    <div class="gold-title">Gorras</div>
+  </div>
 </header>
 
-<section class="hero">
-  <img src="https://i.imgur.com/PFgZjzN.png" alt="Portada Black Diamond">
+<section class="grid">
+  <!-- 🔴 PEGA AQUÍ TUS IFRAMES -->
 </section>
 
-<section class="productos">
-  <h2>Catálogo Destacado</h2>
-
-  <div class="grid">
-    <!-- 🔴 PEGA AQUÍ TUS IFRAMES -->
-  </div>
-</section>
+<p class="description">
+  Streetwear premium · ediciones limitadas · estilo exclusivo · envíos rápidos
+</p>
 
 <footer>
   © 2026 Black Diamond
@@ -273,31 +272,41 @@ footer {
 
 <script>
 
+/* 💎 DIAMANTES */
 function createDiamond(){
   const d = document.createElement("img");
   d.src = "https://i.imgur.com/5HS1lGY.png";
   d.className = "diamond";
+
   d.style.left = Math.random() * 100 + "vw";
   d.style.top = "-10vh";
-  const size = 10 + Math.random() * 20;
+
+  const size = 12 + Math.random() * 20;
   d.style.width = size + "px";
-  d.style.opacity = 0.5 + Math.random() * 0.5;
-  d.style.transform = `rotate(${Math.random() * 360}deg)`;
-  d.style.animationDuration = (8 + Math.random() * 6) + "s";
+
+  d.style.animationDuration = (6 + Math.random() * 5) + "s";
+
   document.getElementById("rain").appendChild(d);
+
   setTimeout(() => d.remove(), 12000);
 }
 
+/* ✨ ESTRELLAS */
 function createStar(){
   const s = document.createElement("div");
   s.className = "star";
+
   s.style.left = Math.random() * 100 + "vw";
   s.style.top = Math.random() * 100 + "vh";
+
   const size = Math.random() * 2.5;
   s.style.width = size + "px";
   s.style.height = size + "px";
-  s.style.animationDuration = (1.5 + Math.random() * 3) + "s";
+
+  s.style.animationDuration = (2 + Math.random() * 3) + "s";
+
   document.getElementById("stars").appendChild(s);
+
   setTimeout(() => s.remove(), 6000);
 }
 
