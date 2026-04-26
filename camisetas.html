@@ -250,16 +250,16 @@ footer {
 <iframe srcdoc='
 <div style="max-width:240px;font-family:Arial;padding:10px;position:relative;background:#171616;border-radius:12px;">
 
-<img id="img" src="https://i.imgur.com/ajg9plH.jpeg" style="width:100%;height:160px;object-fit:cover;border-radius:10px;">
+<img id="img" src="https://i.imgur.com/1fy1pdl.jpeg" style="width:100%;height:160px;object-fit:cover;border-radius:10px;">
 
 <button onclick="prev()" style="position:absolute;top:70px;left:5px;background:#3D3D3D;color:white;border:none;border-radius:50%;width:25px;height:25px;">‹</button>
 <button onclick="next()" style="position:absolute;top:70px;right:5px;background:#3D3D3D;color:white;border:none;border-radius:50%;width:25px;height:25px;">›</button>
 
-<h3 style="margin:8px 0 2px;font-size:14px;color:#ABAA57;">💎Camiseta Diamond elegante prueba 12</h3>
-<p style="font-size:10px;color:#BABABA;margin:2px 0;">Ref: 0001</p>
+<h3 style="margin:8px 0 2px;font-size:14px;color:#ABAA57;">💎Camiseta Diamon Corta (prueba) 12</h3>
+<p style="font-size:10px;color:#BABABA;margin:2px 0;">Ref: 00001</p>
 
 <select id="color" onchange="cambiarColor()" style="width:100%;margin-top:6px;">
-<option value="" selected>🎨 Color</option><option value="Blanco">Blanco</option>
+<option value="" selected>🎨 Color</option><option value="Blanco">Blanco</option><option value="Negro">Negro</option><option value="Rojo">Rojo</option>
 </select>
 
 <select id="talla" style="width:100%;margin-top:5px;">
@@ -284,7 +284,7 @@ footer {
 
 <script>
 var i = 0;
-var productos = [{color:"Blanco",imagen:"https://i.imgur.com/ajg9plH.jpeg"}];
+var productos = [{color:"Blanco",imagen:"https://i.imgur.com/1fy1pdl.jpeg"},{color:"Negro",imagen:"https://i.imgur.com/j7lRt3T.jpeg"},{color:"Rojo",imagen:"https://i.imgur.com/ixVC1xC.jpeg"}];
 
 function actualizarImagen(){
   document.getElementById("img").src = productos[i].imagen;
@@ -325,9 +325,9 @@ function enviar(){
 
   var mensaje =
   "🛍️ NUEVO PEDIDO%0A%0A" +
-  "Producto: Camiseta Diamond elegante prueba%0A" +
+  "Producto: Camiseta Diamon Corta (prueba)%0A" +
   "Precio: 12%0A" +
-  "Referencia: 0001%0A%0A" +
+  "Referencia: 00001%0A%0A" +
   "Color: " + color + "%0A" +
   "Talla: " + talla + "%0A%0A" +
   "Nombre: " + nombre + "%0A" +
