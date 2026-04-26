@@ -22,13 +22,11 @@
   z-index: 0;
 }
 
-/* 💎 DIAMANTES */
 .diamond {
   position: absolute;
   width: 18px;
   height: auto;
   opacity: 0.9;
-  pointer-events: none;
   animation: fall linear forwards, glow 2.2s ease-in-out infinite;
   filter: drop-shadow(0 0 6px rgba(255,215,0,0.8));
 }
@@ -45,7 +43,6 @@
   100% { filter: brightness(1); }
 }
 
-/* ✨ ESTRELLAS */
 .star {
   position: absolute;
   width: 2px;
@@ -67,11 +64,6 @@
    BASE
 ======================= */
 
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -85,12 +77,16 @@ body {
 header, section, footer {
   position: relative;
   z-index: 2;
-  text-align: center;
 }
 
 /* =======================
-   TITULO
+   TITULO BRILLANTE (LO RESTAURÉ)
 ======================= */
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
 
 h1 {
   font-size: clamp(3.5rem, 8vw, 6.5rem);
@@ -116,7 +112,7 @@ h1 {
 }
 
 /* =======================
-   NAV / BOTONES
+   NAV
 ======================= */
 
 nav {
@@ -131,23 +127,13 @@ nav a {
   text-decoration: none;
   color: #d4af37;
   font-weight: 700;
-
   padding: 10px 18px;
   border-radius: 12px;
-
   border: 1px solid rgba(212,175,55,0.4);
-  background: rgba(0,0,0,0.25);
-
-  transition: 0.2s ease;
-}
-
-nav a:hover {
-  background: rgba(212,175,55,0.15);
-  transform: translateY(-1px);
 }
 
 /* =======================
-   BADGE CATALOGO
+   LINGOTE / BADGE RESTAURADO
 ======================= */
 
 .gold-badge {
@@ -174,27 +160,6 @@ nav a:hover {
     inset 0 0 14px rgba(0,0,0,0.6);
 
   border: 1px solid rgba(255,215,0,0.35);
-
-  position: relative;
-}
-
-.gold-badge::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 18px;
-  background: linear-gradient(
-    120deg,
-    transparent 25%,
-    rgba(255,255,255,0.12) 45%,
-    transparent 65%
-  );
-  animation: shineMove 5s infinite linear;
-}
-
-@keyframes shineMove {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
 }
 
 .gold-title {
@@ -217,57 +182,43 @@ nav a:hover {
   animation: shimmer 4s linear infinite;
 
   margin: 0;
-  white-space: nowrap;
 }
 
 /* =======================
-   GRID
+   GRID (CORRECTO PARA IFRAMES)
 ======================= */
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 28px;
-
-  justify-items: center;
-  align-items: start;
-  margin-top: 25px;
+  padding: 20px;
 }
 
 .grid iframe {
-  width: 100%;
-  max-width: 260px;
-  min-height: 620px;
+  width: 260px;
+  height: 620px;
   border: none;
   border-radius: 12px;
 }
 
 /* =======================
-   DESCRIPCION
+   DESCRIPCIÓN RESTAURADA
 ======================= */
 
 .description {
   color: #e6d08a;
-  text-shadow: 0 0 10px rgba(255,215,0,0.12);
   max-width: 700px;
   margin: 25px auto 0;
   font-size: 14px;
+  text-shadow: 0 0 10px rgba(255,215,0,0.12);
 }
 
 /* FOOTER */
 footer {
-  text-align: center;
   padding: 30px;
   color: #888;
-}
-
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 768px) {
-  .grid { grid-template-columns: 1fr; }
 }
 
 </style>
@@ -278,7 +229,6 @@ footer {
 <div id="rain"></div>
 <div id="stars"></div>
 
-<!-- NAV BOTONES -->
 <nav>
   <a href="index.html">Inicio</a>
   <a href="camisetas.html">Camisetas</a>
@@ -289,23 +239,24 @@ footer {
 <header>
   <h1>Black Diamond</h1>
 
+  <!-- 🔥 RESTAURADO LINGOTE -->
   <div class="gold-badge">
     <div class="gold-title">Tinda online envios rapidos</div>
   </div>
 </header>
 
 <section class="grid">
-  <!-- 🔴 PEGA AQUÍ TUS IFRAMES -->
+  <!-- 🔴 AQUÍ PEGAS LOS IFRAMES DEL PANEL -->
 </section>
 
-<div style="text-align:center; max-width:800px; margin:20px auto; color:#e6d08a; font-size:15px; line-height:1.5; text-shadow:0 0 10px rgba(255,215,0,0.12);">
+<!-- 🔥 RESTAURADA DESCRIPCIÓN -->
+<div class="description">
 
-🖤 <strong>Black Diamond — el diamante negro del streetwear urbano</strong> 🖤  
-👕 Tienda de ropa urbana con estilo propio, actitud y diseños exclusivos con pedrería.  
-💎 Prendas únicas que combinan lo urbano con lo elegante para destacar siempre.  
-🔥 Moda premium a precios accesibles sin perder calidad ni diseño.  
-🚚 Envíos gratuitos a toda España, rápidos y seguros.  
-✨ Viste diferente, expresa tu identidad y destaca siempre.
+🖤 Black Diamond — el diamante negro del streetwear urbano 🖤  
+👕 Moda urbana premium con identidad propia  
+💎 Diseños exclusivos con estilo elegante y callejero  
+🚚 Envíos rápidos en España  
+🔥 Viste diferente, destaca siempre
 
 </div>
 
@@ -315,41 +266,26 @@ footer {
 
 <script>
 
-/* 💎 DIAMANTES */
+/* DIAMANTES */
 function createDiamond(){
   const d = document.createElement("img");
   d.src = "https://i.imgur.com/5HS1lGY.png";
   d.className = "diamond";
-
   d.style.left = Math.random() * 100 + "vw";
   d.style.top = "-10vh";
-
-  const size = 12 + Math.random() * 20;
-  d.style.width = size + "px";
-
+  d.style.width = (12 + Math.random() * 20) + "px";
   d.style.animationDuration = (6 + Math.random() * 5) + "s";
-
   document.getElementById("rain").appendChild(d);
-
   setTimeout(() => d.remove(), 12000);
 }
 
-/* ✨ ESTRELLAS */
+/* ESTRELLAS */
 function createStar(){
   const s = document.createElement("div");
   s.className = "star";
-
   s.style.left = Math.random() * 100 + "vw";
   s.style.top = Math.random() * 100 + "vh";
-
-  const size = Math.random() * 2.5;
-  s.style.width = size + "px";
-  s.style.height = size + "px";
-
-  s.style.animationDuration = (2 + Math.random() * 3) + "s";
-
   document.getElementById("stars").appendChild(s);
-
   setTimeout(() => s.remove(), 6000);
 }
 
