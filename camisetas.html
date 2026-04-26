@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- 🧭 TITULO SEO (cambia aquí si quieres posicionar mejor en Google) -->
 <title>Black Diamond | Moda Streetwear Premium</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -23,7 +22,6 @@
   z-index: 0;
 }
 
-/* 💎 DIAMANTES (LLUVIA) */
 .diamond {
   position: absolute;
   width: 18px;
@@ -47,7 +45,6 @@
   100% { filter: brightness(1); }
 }
 
-/* ✨ ESTRELLAS */
 .star {
   position: absolute;
   width: 2px;
@@ -78,14 +75,13 @@ body {
   overflow-x: hidden;
 }
 
-/* 🧠 todo el contenido por encima del fondo */
 header, section, footer, nav {
   position: relative;
   z-index: 2;
 }
 
 /* =======================
-   MENU (URLS IMPORTANTES)
+   MENU (LIMPIO + PREMIUM)
 ======================= */
 
 nav {
@@ -99,21 +95,27 @@ nav {
 
 nav a {
   text-decoration: none;
-  color: #fff;
-  border: 1px solid rgba(212,175,55,0.25);
   padding: 10px 18px;
   border-radius: 12px;
-  transition: 0.3s;
   font-size: 14px;
+
+  color: #d4af37;
+  font-weight: 700;
+
+  border: 1px solid rgba(212,175,55,0.35);
+  background: rgba(0,0,0,0.2);
+
+  transition: 0.25s;
 }
 
 nav a:hover {
-  background: #ABAA57;
-  color: #000;
+  background: rgba(212,175,55,0.15);
+  border-color: rgba(255,215,0,0.6);
+  transform: scale(1.05);
 }
 
 /* =======================
-   HEADER (TITULO + TEXTO)
+   HEADER
 ======================= */
 
 header {
@@ -125,12 +127,12 @@ header {
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-family: 'Playfair Display', serif;
   letter-spacing: 6px;
+
   background: linear-gradient(90deg,#7a5c12,#ffd700,#fff8dc,#d4af37,#8c6a12);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* 🧾 TEXTO DE MARCA (puedes cambiar marketing aquí) */
 .subtitle {
   max-width: 700px;
   margin: 10px auto 0;
@@ -139,7 +141,7 @@ header {
 }
 
 /* =======================
-   HERO (IMAGEN PRINCIPAL)
+   HERO
 ======================= */
 
 .hero {
@@ -155,7 +157,7 @@ header {
 }
 
 /* =======================
-   CATALOGO (AQUI VAN PRODUCTOS)
+   CATALOGO
 ======================= */
 
 .productos {
@@ -167,12 +169,11 @@ header {
   font-family: 'Playfair Display', serif;
   font-size: 32px;
   margin-bottom: 35px;
-  background: linear-gradient(90deg,#b8860b,#fff,#d4af37,#fff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+
+  color: #ffd700;
+  text-shadow: 0 0 12px rgba(255,215,0,0.3);
 }
 
-/* 📦 AQUÍ VAN LOS IFRAMES DE PRODUCTOS */
 .grid {
   max-width: 1400px;
   margin: 0 auto;
@@ -199,7 +200,6 @@ footer {
   color: #888;
 }
 
-/* RESPONSIVE */
 @media (max-width: 1024px) {
   .grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -208,20 +208,14 @@ footer {
   .grid { grid-template-columns: 1fr; }
 }
 
-/* =======================
-   FONDO EFECTOS CAPAS
-======================= */
-
 </style>
 </head>
 
 <body>
 
-<!-- 💎 EFECTOS -->
 <div id="rain"></div>
 <div id="stars"></div>
 
-<!-- 🧭 MENU (URLs de páginas) -->
 <nav>
   <a href="index.html">Inicio</a>
   <a href="camisetas.html">Camisetas</a>
@@ -229,27 +223,22 @@ footer {
   <a href="gorras.html">Gorras</a>
 </nav>
 
-<!-- 🏷️ HEADER -->
 <header>
   <h1 class="title-gold">Black Diamond</h1>
-
-  <!-- ✏️ TEXTO DE MARKETING -->
   <p class="subtitle">
     Streetwear premium · ediciones limitadas · estilo exclusivo · envíos rápidos
   </p>
 </header>
 
-<!-- 🖼️ IMAGEN PRINCIPAL -->
 <section class="hero">
   <img src="https://i.imgur.com/PFgZjzN.png" alt="Portada Black Diamond">
 </section>
 
-<!-- 📦 CATÁLOGO (AQUÍ VAN PRODUCTOS) -->
 <section class="productos">
   <h2>Catálogo Destacado</h2>
 
   <div class="grid">
-    <!-- 🔴 PEGAR PRODUCTOS AQUÍ (IFRAMES) -->
+    <!-- 🔴 PEGA AQUÍ TUS IFRAMES -->
   </div>
 </section>
 
@@ -259,49 +248,34 @@ footer {
 
 <script>
 
-/* 💎 DIAMANTES */
 function createDiamond(){
   const d = document.createElement("img");
   d.src = "https://i.imgur.com/5HS1lGY.png";
   d.className = "diamond";
-
   d.style.left = Math.random() * 100 + "vw";
   d.style.top = "-10vh";
-
   const size = 10 + Math.random() * 20;
   d.style.width = size + "px";
-
   d.style.opacity = 0.5 + Math.random() * 0.5;
-
   d.style.transform = `rotate(${Math.random() * 360}deg)`;
-
   d.style.animationDuration = (8 + Math.random() * 6) + "s";
-
   document.getElementById("rain").appendChild(d);
-
   setTimeout(() => d.remove(), 12000);
 }
 
-/* ✨ ESTRELLAS */
 function createStar(){
   const s = document.createElement("div");
   s.className = "star";
-
   s.style.left = Math.random() * 100 + "vw";
   s.style.top = Math.random() * 100 + "vh";
-
   const size = Math.random() * 2.5;
   s.style.width = size + "px";
   s.style.height = size + "px";
-
   s.style.animationDuration = (1.5 + Math.random() * 3) + "s";
-
   document.getElementById("stars").appendChild(s);
-
   setTimeout(() => s.remove(), 6000);
 }
 
-/* 💎 DENSIDAD DE EFECTOS */
 setInterval(createDiamond, 350);
 setInterval(createStar, 40);
 
