@@ -6,47 +6,33 @@
 <title>Black Diamond</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-<!--
-GUÍA RÁPIDA:
-
-1. Esta será tu página principal: index.html
-2. Duplica este archivo para crear:
-   - camisetas.html
-   - gorras.html
-   - gafas.html
-   - conjuntos.html
-
-3. En cada página cambia:
-   - título principal
-   - imagen portada
-   - productos iframe
-
-4. DONDE PONE:
-   <!-- PEGAR PRODUCTOS AQUÍ -->
- 
 <style>
 
-/* CHISPITAS / DESTELLOS SUAVES */
-#rain {
+/* =======================
+   CAPAS DE EFECTOS
+======================= */
+
+#rain, #stars {
   position: fixed;
   inset: 0;
   overflow: hidden;
-  z-index: 0;
   pointer-events: none;
+  z-index: 0;
 }
+
+/* =======================
+   DIAMANTES
+======================= */
 
 .diamond {
   position: absolute;
-  width: 4px;
-  height: 4px;
-  background: radial-gradient(circle, #fff 0%, #bffcff 35%, #ffd700 60%, transparent 80%);
-  transform: rotate(45deg);
-  opacity: 0.85;
-  box-shadow:
-    0 0 5px rgba(255,255,255,0.8),
-    0 0 10px rgba(0,255,255,0.45),
-    0 0 16px rgba(255,215,0,0.35);
+  width: 18px;
+  height: auto;
+  opacity: 0.9;
+  pointer-events: none;
   animation: fall linear forwards, glow 2.2s ease-in-out infinite;
+  transform-origin: center;
+  filter: drop-shadow(0 0 6px rgba(255,215,0,0.8));
 }
 
 @keyframes fall {
@@ -54,11 +40,9 @@ GUÍA RÁPIDA:
     transform: translateY(-10vh) rotate(0deg);
     opacity: 0;
   }
-  10% {
-    opacity: 1;
-  }
+  10% { opacity: 1; }
   100% {
-    transform: translateY(110vh) rotate(240deg);
+    transform: translateY(110vh) rotate(360deg);
     opacity: 0;
   }
 }
@@ -68,6 +52,31 @@ GUÍA RÁPIDA:
   50% { filter: brightness(1.7); }
   100% { filter: brightness(1); }
 }
+
+/* =======================
+   ESTRELLAS / DESTELLOS
+======================= */
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle 2.5s infinite ease-in-out;
+  box-shadow: 0 0 6px white;
+}
+
+@keyframes twinkle {
+  0%   { opacity: 0; transform: scale(0.8); }
+  50%  { opacity: 1; transform: scale(1.4); }
+  100% { opacity: 0; transform: scale(0.8); }
+}
+
+/* =======================
+   ESTILO GENERAL
+======================= */
 
 body {
   margin: 0;
@@ -198,19 +207,19 @@ footer {
 }
 </style>
 </head>
+
 <body>
 
 <div id="rain"></div>
+<div id="stars"></div>
 
-<!-- MENÚ SUPERIOR -->
 <nav>
   <a href="index.html">Inicio</a>
   <a href="camisetas.html">Camisetas</a>
   <a href="conjuntos.html">Conjuntos</a>
- <a href="gorras.html">Gorras</a>
+  <a href="gorras.html">Gorras</a>
 </nav>
 
-<!-- TÍTULO -->
 <header>
   <h1 class="title-gold">Black Diamond</h1>
   <p class="subtitle">
@@ -218,86 +227,76 @@ footer {
   </p>
 </header>
 
-<!-- IMAGEN PRINCIPAL -->
 <section class="hero">
-  <!-- CAMBIAR IMAGEN AQUÍ -->
   <img src="https://i.imgur.com/PFgZjzN.png" alt="Portada Black Diamond">
 </section>
 
-<!-- PRODUCTOS -->
 <section class="productos">
   <h2>Catálogo Destacado</h2>
-
-  <div class="grid">
-
-    <!-- PEGAR PRODUCTOS AQUÍ -->
-    <!-- PEGA TUS IFRAMES DE PRODUCTOS -->
-
-  </div>
+  <div class="grid"></div>
 </section>
 
 <footer>
   © 2026 Black Diamond
 </footer>
 
-<!-- =============================== -->
-<!-- EJEMPLOS PARA LAS DEMÁS PÁGINAS -->
-<!-- =============================== -->
-
-<!--
-CAMISETAS.HTML
-- Duplica este archivo
-- Guarda como camisetas.html
-- Cambia solo esto:
-
-<h2>Catálogo Camisetas</h2>
-
-Y pega aquí SOLO productos de camisetas
--->
-
-<!--
-GORRAS.HTML
-- Duplica este archivo
-- Guarda como gorras.html
-- Cambia solo esto:
-
-<h2>Catálogo Gorras</h2>
-
-Y pega aquí SOLO productos de gorras
--->
-
-<!--
-GAFAS.HTML
-- Duplica este archivo
-- Guarda como gafas.html
-- Cambia solo esto:
-
-<h2>Catálogo Gafas de Sol</h2>
-
-Y pega aquí SOLO productos de gafas
--->
-
-<!--
-CONJUNTOS.HTML
-- Duplica este archivo
-- Guarda como conjuntos.html
-- Cambia solo esto:
-
-<h2>Catálogo Conjuntos</h2>
-
-Y pega aquí SOLO productos de conjuntos
--->
-
 <script>
+
+/* =======================
+   DIAMANTES (LLUVIA)
+======================= */
+
 function createDiamond(){
-  const d = document.createElement("div");
+  const d = document.createElement("img");
+  d.src = "https://i.imgur.com/5HS1lGY.png";
   d.className = "diamond";
+
   d.style.left = Math.random() * 100 + "vw";
-  d.style.animationDuration = (4 + Math.random() * 5) + "s";
+  d.style.top = "-10vh";
+
+  const size = 10 + Math.random() * 20;
+  d.style.width = size + "px";
+
+  d.style.opacity = 0.5 + Math.random() * 0.5;
+
+  d.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+  d.style.animationDuration = (8 + Math.random() * 6) + "s";
+
   document.getElementById("rain").appendChild(d);
-  setTimeout(() => d.remove(), 7000);
+
+  setTimeout(() => d.remove(), 12000);
 }
-setInterval(createDiamond, 180);
+
+/* =======================
+   ESTRELLAS (80% MÁS)
+======================= */
+
+function createStar(){
+  const s = document.createElement("div");
+  s.className = "star";
+
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.top = Math.random() * 100 + "vh";
+
+  const size = Math.random() * 2.5;
+  s.style.width = size + "px";
+  s.style.height = size + "px";
+
+  s.style.animationDuration = (1.5 + Math.random() * 3) + "s";
+  s.style.opacity = Math.random();
+
+  document.getElementById("stars").appendChild(s);
+
+  setTimeout(() => s.remove(), 6000);
+}
+
+/* DIAMANTES (60% MENOS) */
+setInterval(createDiamond, 350);
+
+/* ESTRELLAS (80% MÁS DENSIDAD) */
+setInterval(createStar, 40);
+
 </script>
 
 </body>
