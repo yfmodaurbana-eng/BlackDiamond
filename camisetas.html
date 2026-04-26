@@ -296,6 +296,101 @@ footer {
 
 <section class="grid">
   <!-- 🔴 PEGA AQUÍ TUS IFRAMES -->
+   <iframe srcdoc='
+<div style="max-width:240px;font-family:Arial;padding:10px;position:relative;background:#171616;border-radius:12px;">
+
+<img id="img" src="https://imgur.com/a/dLM9FPb" style="width:100%;height:160px;object-fit:cover;border-radius:10px;">
+
+<button onclick="prev()" style="position:absolute;top:70px;left:5px;background:#3D3D3D;color:white;border:none;border-radius:50%;width:25px;height:25px;">‹</button>
+<button onclick="next()" style="position:absolute;top:70px;right:5px;background:#3D3D3D;color:white;border:none;border-radius:50%;width:25px;height:25px;">›</button>
+
+<h3 style="margin:8px 0 2px;font-size:14px;color:#ABAA57;">💎camisa diamond 12</h3>
+<p style="font-size:10px;color:#BABABA;margin:2px 0;">Ref: 00001</p>
+
+<select id="color" onchange="cambiarColor()" style="width:100%;margin-top:6px;">
+<option value="" selected>🎨 Color</option><option value="Blanco">Blanco</option>
+</select>
+
+<select id="talla" style="width:100%;margin-top:5px;">
+<option value="" selected>🏷️ Talla</option>
+<option value="S">S</option>
+<option value="M">M</option>
+<option value="L">L</option>
+</select>
+
+<details style="color:white;margin-top:6px;font-size:11px;">
+<summary>📦 Dirección envío (Importante)</summary>
+<input id="nombre" placeholder="Nombre" style="width:100%;margin-top:5px;">
+<input id="telefonoCliente" placeholder="Teléfono" style="width:100%;margin-top:5px;">
+<input id="direccion" placeholder="Dirección" style="width:100%;margin-top:5px;">
+<input id="ciudad" placeholder="Ciudad" style="width:100%;margin-top:5px;">
+<input id="cp" placeholder="CP" style="width:100%;margin-top:5px;">
+</details>
+
+<button onclick="enviar()" style="width:100%;margin-top:8px;background:#ABAA57;color:black;padding:10px;border:none;border-radius:8px;font-weight:bold;">💳 Compra</button>
+
+</div>
+
+<script>
+var i = 0;
+var productos = [{color:"Blanco",imagen:"https://imgur.com/a/dLM9FPb"}];
+
+function actualizarImagen(){
+  document.getElementById("img").src = productos[i].imagen;
+}
+
+function next(){
+  i = (i + 1) % productos.length;
+  actualizarImagen();
+  document.getElementById("color").value = productos[i].color;
+}
+
+function prev(){
+  i = (i - 1 + productos.length) % productos.length;
+  actualizarImagen();
+  document.getElementById("color").value = productos[i].color;
+}
+
+function cambiarColor(){
+  var c = document.getElementById("color").value;
+  for(var x = 0; x < productos.length; x++){
+    if(productos[x].color === c){
+      i = x;
+      actualizarImagen();
+      break;
+    }
+  }
+}
+
+function enviar(){
+
+  var color = document.getElementById("color").value;
+  var talla = document.getElementById("talla").value;
+  var nombre = document.getElementById("nombre").value;
+  var telefonoCliente = document.getElementById("telefonoCliente").value;
+  var direccion = document.getElementById("direccion").value;
+  var ciudad = document.getElementById("ciudad").value;
+  var cp = document.getElementById("cp").value;
+
+  var mensaje =
+  "🛍️ NUEVO PEDIDO%0A%0A" +
+  "Producto: camisa diamond%0A" +
+  "Precio: 12%0A" +
+  "Referencia: 00001%0A%0A" +
+  "Color: " + color + "%0A" +
+  "Talla: " + talla + "%0A%0A" +
+  "Nombre: " + nombre + "%0A" +
+  "Teléfono: " + telefonoCliente + "%0A" +
+  "Dirección: " + direccion + "%0A" +
+  "Ciudad: " + ciudad + "%0A" +
+  "CP: " + cp;
+
+  window.open("https://wa.me/34607877328?text=" + mensaje);
+}
+
+actualizarImagen();
+</script>
+' style="width:100%;height:620px;border:none;"></iframe>
 </section>
 
 <p class="description">
