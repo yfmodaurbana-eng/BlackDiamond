@@ -3,13 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Black Diamond</title>
+
+<!-- 🧭 TITULO SEO (cambia aquí si quieres posicionar mejor en Google) -->
+<title>Black Diamond | Moda Streetwear Premium</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
 /* =======================
-   CAPAS DE EFECTOS
+   EFECTOS DE FONDO
 ======================= */
 
 #rain, #stars {
@@ -20,10 +23,7 @@
   z-index: 0;
 }
 
-/* =======================
-   DIAMANTES
-======================= */
-
+/* 💎 DIAMANTES (LLUVIA) */
 .diamond {
   position: absolute;
   width: 18px;
@@ -36,15 +36,9 @@
 }
 
 @keyframes fall {
-  0% {
-    transform: translateY(-10vh) rotate(0deg);
-    opacity: 0;
-  }
+  0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
   10% { opacity: 1; }
-  100% {
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0;
-  }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
 }
 
 @keyframes glow {
@@ -53,10 +47,7 @@
   100% { filter: brightness(1); }
 }
 
-/* =======================
-   ESTRELLAS / DESTELLOS
-======================= */
-
+/* ✨ ESTRELLAS */
 .star {
   position: absolute;
   width: 2px;
@@ -69,8 +60,8 @@
 }
 
 @keyframes twinkle {
-  0%   { opacity: 0; transform: scale(0.8); }
-  50%  { opacity: 1; transform: scale(1.4); }
+  0% { opacity: 0; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.4); }
   100% { opacity: 0; transform: scale(0.8); }
 }
 
@@ -87,10 +78,15 @@ body {
   overflow-x: hidden;
 }
 
+/* 🧠 todo el contenido por encima del fondo */
 header, section, footer, nav {
   position: relative;
   z-index: 2;
 }
+
+/* =======================
+   MENU (URLS IMPORTANTES)
+======================= */
 
 nav {
   display: flex;
@@ -116,6 +112,10 @@ nav a:hover {
   color: #000;
 }
 
+/* =======================
+   HEADER (TITULO + TEXTO)
+======================= */
+
 header {
   text-align: center;
   padding: 50px 20px 20px;
@@ -130,12 +130,17 @@ header {
   -webkit-text-fill-color: transparent;
 }
 
+/* 🧾 TEXTO DE MARCA (puedes cambiar marketing aquí) */
 .subtitle {
   max-width: 700px;
   margin: 10px auto 0;
   color: #d6d6d6;
   line-height: 1.6;
 }
+
+/* =======================
+   HERO (IMAGEN PRINCIPAL)
+======================= */
 
 .hero {
   max-width: 1200px;
@@ -148,6 +153,10 @@ header {
   border-radius: 18px;
   display: block;
 }
+
+/* =======================
+   CATALOGO (AQUI VAN PRODUCTOS)
+======================= */
 
 .productos {
   padding: 60px 20px;
@@ -163,6 +172,7 @@ header {
   -webkit-text-fill-color: transparent;
 }
 
+/* 📦 AQUÍ VAN LOS IFRAMES DE PRODUCTOS */
 .grid {
   max-width: 1400px;
   margin: 0 auto;
@@ -179,40 +189,39 @@ header {
   border: none;
 }
 
+/* =======================
+   FOOTER
+======================= */
+
 footer {
   text-align: center;
   padding: 30px;
   color: #888;
 }
 
+/* RESPONSIVE */
 @media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(2, minmax(240px, 1fr));
-  }
+  .grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  nav {
-    gap: 10px;
-  }
-
-  nav a {
-    font-size: 13px;
-    padding: 9px 14px;
-  }
+  .grid { grid-template-columns: 1fr; }
 }
+
+/* =======================
+   FONDO EFECTOS CAPAS
+======================= */
+
 </style>
 </head>
 
 <body>
 
+<!-- 💎 EFECTOS -->
 <div id="rain"></div>
 <div id="stars"></div>
 
+<!-- 🧭 MENU (URLs de páginas) -->
 <nav>
   <a href="index.html">Inicio</a>
   <a href="camisetas.html">Camisetas</a>
@@ -220,20 +229,28 @@ footer {
   <a href="gorras.html">Gorras</a>
 </nav>
 
+<!-- 🏷️ HEADER -->
 <header>
   <h1 class="title-gold">Black Diamond</h1>
+
+  <!-- ✏️ TEXTO DE MARKETING -->
   <p class="subtitle">
-    Moda exclusiva · lujo · edición limitada · estilo premium
+    Streetwear premium · ediciones limitadas · estilo exclusivo · envíos rápidos
   </p>
 </header>
 
+<!-- 🖼️ IMAGEN PRINCIPAL -->
 <section class="hero">
   <img src="https://i.imgur.com/PFgZjzN.png" alt="Portada Black Diamond">
 </section>
 
+<!-- 📦 CATÁLOGO (AQUÍ VAN PRODUCTOS) -->
 <section class="productos">
   <h2>Catálogo Destacado</h2>
-  <div class="grid"></div>
+
+  <div class="grid">
+    <!-- 🔴 PEGAR PRODUCTOS AQUÍ (IFRAMES) -->
+  </div>
 </section>
 
 <footer>
@@ -242,10 +259,7 @@ footer {
 
 <script>
 
-/* =======================
-   DIAMANTES (LLUVIA)
-======================= */
-
+/* 💎 DIAMANTES */
 function createDiamond(){
   const d = document.createElement("img");
   d.src = "https://i.imgur.com/5HS1lGY.png";
@@ -268,10 +282,7 @@ function createDiamond(){
   setTimeout(() => d.remove(), 12000);
 }
 
-/* =======================
-   ESTRELLAS (80% MÁS)
-======================= */
-
+/* ✨ ESTRELLAS */
 function createStar(){
   const s = document.createElement("div");
   s.className = "star";
@@ -284,25 +295,16 @@ function createStar(){
   s.style.height = size + "px";
 
   s.style.animationDuration = (1.5 + Math.random() * 3) + "s";
-  s.style.opacity = Math.random();
 
   document.getElementById("stars").appendChild(s);
 
   setTimeout(() => s.remove(), 6000);
 }
 
-/* DIAMANTES (60% MENOS) */
+/* 💎 DENSIDAD DE EFECTOS */
 setInterval(createDiamond, 350);
-
-/* ESTRELLAS (80% MÁS DENSIDAD) */
 setInterval(createStar, 40);
 
-</script>
-
-</body>
-</html>
-}
-setInterval(createDiamond, 180);
 </script>
 
 </body>
